@@ -5,7 +5,8 @@ import Isabela01vSilva.github.cursospringbootexpert.produtosapi.repository.Produ
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -19,7 +20,6 @@ public class ProdutoController {
     }
 
     @PostMapping
-    @Transactional
     public Produto salvar(@RequestBody Produto produto){
         System.out.println("Produto recebido" + produto);
 
@@ -31,8 +31,23 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    @Transactional
     public Produto obterPorId(@PathVariable("id") String id){
         return produtoRepository.findById(id).orElse(null);
+    }
+
+    @DeleteMapping("{id}")
+    public void deletar(@PathVariable("id") String id) {
+        produtoRepository.deleteAllById(Collections.singleton(id));
+    }
+
+    @PutMapping("{id}")
+    public void atualizar(@PathVariable("id") String id, @RequestBody Produto produto) {
+        produto.setId(id);
+        produtoRepository.save(produto);
+    }
+
+    @GetMapping
+    public List<Produto> buscar(@RequestParam("nome") String nome) {
+       return produtoRepository.findByNome(nome);
     }
 }

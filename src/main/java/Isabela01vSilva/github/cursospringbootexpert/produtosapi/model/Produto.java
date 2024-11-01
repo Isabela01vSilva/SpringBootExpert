@@ -11,11 +11,11 @@ import jakarta.persistence.Entity;
 @Entity
 @Getter
 @Setter
-@Table(name = "produto")
+@Table(name = "tb_produto")
 public class Produto {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "codigo")
     private String id;
 
     @Column(name = "nome")
