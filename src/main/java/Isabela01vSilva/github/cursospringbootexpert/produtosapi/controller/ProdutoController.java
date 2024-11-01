@@ -13,11 +13,8 @@ import java.util.UUID;
 @RequestMapping("produtos")
 public class ProdutoController {
 
+    @Autowired
     private ProdutoRepository produtoRepository;
-
-    public ProdutoController(ProdutoRepository produtoRepository) {
-        this.produtoRepository = produtoRepository;
-    }
 
     @PostMapping
     public Produto salvar(@RequestBody Produto produto){
