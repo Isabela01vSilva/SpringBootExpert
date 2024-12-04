@@ -1,13 +1,12 @@
 spring:
   application:
-    name: Produtos API
-  datasource:
-      url: jdbc:h2:mem:produtos
-      username: sa
-      password: 12345
+    name: Arquitetura Spring
   jpa:
-      database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    show-sql: true
+  main:
+    lazy-initialization: false
+app:
+  montadora:
+    motor-padrao: 130
+  config:
+    variavel: valor da variavel X
